@@ -24,25 +24,48 @@ function printCoffeeName(coffeeObject) {
       //Step 4: Drinks that cost $5 and under.
 
   //Explicit Arrow function
-const filteredDrinks = coffeeArray.filter((coffeeObject) => {
- let filteredArray = coffeeObject.price === 5;
-
- filteredArray.map((filteredObject) => {
-    return `${filteredObject.name} costs $${filteredObject.price}`
- })
+let filteredDrinks = coffeeArray.filter((coffeeObject) => {
+  return coffeeObject.price <= 5;
+}).map((filteredObject) => {
+  return `${filteredObject.name} costs $${filteredObject.price}`
 });
 
 console.log(filteredDrinks)
 
         //Step 5: Array of drinks priced at an even number
 
- coffeeArray.filter((ArrayObject) => {
+ let evenPricesArr = coffeeArray.filter((ArrayObject) => {
   return (ArrayObject.price % 2) === 0;
+}).map((filteredObject) => {
+  return ({name:filteredObject.name, price:filteredObject.price});
 });
+
+  console.log(evenPricesArr);
 
 
     //Step 6: Print total
+    let total = 0;
+    coffeeArray.forEach((coffeeObject) => {
+      total += coffeeObject.price;
+    });
 
-  
-  
+    console.log("Grand total $",total);
 
+//Step 7: Array with seasonal drinks
+
+let seasonaDrinks = coffeeArray.filter((coffeeObject) => {
+  return coffeeObject.seasonal;
+}).map((filteredObject) => {
+  return ({name:filteredObject.name, price:filteredObject.price});
+})
+
+console.log(seasonaDrinks);
+
+//Step 8
+  let importedSeasonalDrinks = coffeeArray.filter((filteredObject) => {
+    return filteredObject.seasonal;
+  }).map((filteredObject) => {
+    return `${filteredObject.name} with imported beans ☕️`
+  });
+
+  console.log(importedSeasonalDrinks)
